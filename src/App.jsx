@@ -36,7 +36,6 @@ function App() {
         setCurrentVideo(prev => prev === video1 ? video2 : video1);
       }, 30000);
 
-      // Create sparkles
       const createSparkle = () => {
         const sparkle = {
           id: Date.now(),
@@ -65,7 +64,7 @@ function App() {
       '#ff0000', '#00ff00', '#0000ff', '#ffff00', 
       '#ff00ff', '#00ffff', '#ffa500', '#ff69b4'
     ];
-    
+
     const firework = {
       id: Date.now(),
       x,
@@ -105,10 +104,9 @@ function App() {
   };
 
   const playCongrats = () => {
-    // Create multiple fireworks
     for (let i = 0; i < 5; i++) {
       setTimeout(() => {
-        const x = 20 + Math.random() * 60; // Random position between 20% and 80%
+        const x = 20 + Math.random() * 60;
         const y = 20 + Math.random() * 60;
         createFirework(x, y);
       }, i * 300);
@@ -146,10 +144,7 @@ function App() {
         <div
           key={firework.id}
           className="firework"
-          style={{
-            left: `${firework.x}%`,
-            top: `${firework.y}%`
-          }}
+          style={{ left: `${firework.x}%`, top: `${firework.y}%` }}
         >
           {firework.particles.map(particle => (
             <div
@@ -166,9 +161,7 @@ function App() {
       ))}
 
       {celebrationText && (
-        <div className="celebration-text show">
-          {celebrationText}
-        </div>
+        <div className="celebration-text show">{celebrationText}</div>
       )}
 
       <div className="sparkles">
@@ -189,35 +182,25 @@ function App() {
 
       <div className="graduation-card">
         <h1 className="title">Chúc Mừng Tốt Nghiệp! 🎓</h1>
-        
         <div className="message-container">
           <p className={`message ${!isTypingDone ? 'typing' : ''}`}>
             Chúc mừng Linh đã chính thức tốt nghiệp – một cột mốc quan trọng trong hành trình trưởng thành của Linh!
 
 Na biết suốt những năm qua Linh đã nỗ lực không ngừng, có những lúc mệt mỏi, có lúc muốn buông xuôi, nhưng cuối cùng Linh đã kiên trì và vượt qua tất cả. Na tự hào về Linh lắm!
 
-Rất tiếc Na không thể tham gia buổi lễ hôm nay, nhưng đây là món quà Na muốn gửi đến Linh như lời chúc mừng đặc biệt nhất. Chúc Linh tiếp tục vững bước trên con đường phía trước, chạm tới những ước mơ mới và giữ mãi ngọn lửa đam mê trong tim. Dù ở đâu, Linh luôn có Na ở bên, cổ vũ và tin tưởng vào tất cả những điều tuyệt vời mà Linh sẽ làm!</p>
+Rất tiếc Na không thể tham gia buổi lễ hôm nay, nhưng đây là món quà Na muốn gửi đến Linh như lời chúc mừng đặc biệt nhất. Chúc Linh tiếp tục vững bước trên con đường phía trước, chạm tới những ước mơ mới và giữ mãi ngọn lửa đam mê trong tim. Dù ở đâu, Linh luôn có Na ở bên, cổ vũ và tin tưởng vào tất cả những điều tuyệt vời mà Linh sẽ làm!
+          </p>
           <div className="signature">- Na -</div>
         </div>
 
         <div className="media-section">
           <h2 className="section-title">Kỷ niệm đẹp 📸</h2>
           <div className="gallery">
-            <div className="gallery-item">
-              <img src={img1} alt="Kỷ niệm 1" loading="lazy" />
-            </div>
-            <div className="gallery-item">
-              <img src={img2} alt="Kỷ niệm 2" loading="lazy" />
-            </div>
-            <div className="gallery-item">
-              <img src={img3} alt="Kỷ niệm 3" loading="lazy" />
-            </div>
-            <div className="gallery-item">
-              <img src={img4} alt="Kỷ niệm 4" loading="lazy" />
-            </div>
-            <div className="gallery-item">
-              <img src={img5} alt="Kỷ niệm 5" loading="lazy" />
-            </div>
+            {[img1, img2, img3, img4, img5].map((img, index) => (
+              <div key={index} className="gallery-item">
+                <img src={img} alt={`Kỷ niệm ${index + 1}`} loading="lazy" />
+              </div>
+            ))}
           </div>
 
           <h2 className="section-title">Những khoảnh khắc đáng nhớ 🎬</h2>

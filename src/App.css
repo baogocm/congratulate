@@ -128,23 +128,26 @@ body {
   padding: 0 10px;
   box-sizing: border-box;
 }
-
 .gallery-item {
   position: relative;
   border-radius: 10px;
   overflow: hidden;
-  aspect-ratio: 4/3;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.5s ease;
   cursor: pointer;
+  height: auto; /* bỏ cố định tỷ lệ */
+  aspect-ratio: unset; /* bỏ tỷ lệ 4/3 */
 }
 
 .gallery-item img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto; /* để ảnh hiển thị đúng tỷ lệ */
+  object-fit: contain; /* tránh bị crop ảnh */
   transition: transform 0.3s ease;
+  display: block;
+  background-color: #000; /* nền đen giúp dễ nhìn ảnh nếu có viền trống */
 }
+
 
 .gallery-item:hover {
   transform: translateY(-10px) scale(1.05);
